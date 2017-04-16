@@ -1,0 +1,11 @@
+body {
+	background: url(landscape-1752433_1920.jpg);
+}
+
+.transparencia {
+	background: transparent;
+}
+
+.well {
+	opacity: 0.5;
+}
