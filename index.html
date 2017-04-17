@@ -5,16 +5,20 @@
 	<title>Local Weather App</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 </head>
 
 <body>
 <header class="text-center">
-	<h1 class="transparencia">Local Weather App</h1>
 </header>
 <section class="container">
+	<section class="row text-center">
+		<h1 class="transparencia">Local Weather App</h1>
+	</section>
 	<section class="row">
 		<div class="col-xs-8 text-center transparencia" id="temperatura"></div>
-		<button class="btn btn-primary" id="CelsiusFa">Cº</button>
+		<button class="btn transparencia" id="CelsiusFa" value="c">Cº</button>
 	</section>
 	<section class="row">
 		<div class="col-xs-4 well" id="ciudad"></div>
@@ -22,7 +26,5 @@
 		<div class="col-xs-4 well" id="viento"></div>
 	</section>
 <footer></footer>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </body>
 </html>
