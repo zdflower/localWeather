@@ -3,9 +3,15 @@
 <head>
 <meta charset="utf-8">
 	<title>Local Weather App</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<!--
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet"> 
+	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	-->
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </head>
 
@@ -17,8 +23,13 @@
 		<h1 class="transparencia">Local Weather App</h1>
 	</section>
 	<section class="row">
-		<div class="col-xs-8 text-center transparencia" id="temperatura"></div>
-		<button class="btn transparencia" id="CelsiusFa" value="c">Cº</button>
+		<div class="col-xs-8 text-right transparencia" id="temperatura"></div>
+		<div class="col-xs-4 text-left transparencia">
+			<button class="btn transparencia" id="CelsiusFa" value="c">ºC</button>
+		</div>
+		<!--
+		<button class="btn transparencia text-left" id="CelsiusFa" value="c">ºC</button>
+		-->
 	</section>
 	<section class="row">
 		<div class="col-xs-4 well" id="ciudad"></div>
