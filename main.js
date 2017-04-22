@@ -27,37 +27,52 @@ $(document).ready( function(){
 	//evento botón grados//
 	$("#CelsiusFa").on("click", cambiarUnidades);
 	
-	//falta la parte de obtener el json
 
-	//supongamos que lo tenés
-	//después para el nombre de la ciudad accedes a la propiedad name
-	//para el viento tenés la propiedad wind que a su vez tiene speed y deg
-	//para la temperatura tenés main y después temp
+//http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
 
-	$.getJSON('weather2.json', function(data){//este ejemplo tiene la temperatura en Celsius (metric)
+//para obtener info a partir de latitud y longitud 
+// ejemplo , la apikey es un ejemplo tb. http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b1b15e88fa797225412429c1c50c122a1
+
+	var longitud;
+	var latitud;
+	var unidad = "metric";
+	var idioma = "es";
+	var c1 = "38fca2502";
+	var c2 = "82f6fb95f6cbc49d295ea26";
+
+	//Obtener longitud y latitud
+	$.getJSON('http://ip-api.com/json/?callback=?', function(data){
 		//console.log(data);
-		var temperatura = data["list"][0]["main"]["temp"];
-		var cielo = data["list"][0]["weather"][0]["main"];
-		var viento = data["list"][0]["wind"]["speed"];
-		var ciudad = data["list"][0]["name"];
-		$("#ciudad").html(ciudad);
-		$("#temperatura").html(temperatura);
-		$("#viento").html("Velocidad del viento (en ...): " + viento);
-		$("#cielo").html(cielo);
+		longitud = data["lon"];
+		latitud = data["lat"];
 
-		//si la temperatura es mayor a 26 grados mostrar una imagen "de verano"
-		//si 19 <=  temperatura < 26, mostrar imagen primavera (u otoño, depende de la época del año y el hemisferio)
-		//si la temperatura es menor de 19 grados mostrar imagen de invierno
+		//Weather API
+		var api = "http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud + "&units="+ unidad + "&lang="+ idioma + "&APPID=" + c1 + c2;
+		//var api = "http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud +"&APPID=" + clave;
+		$.getJSON(api, function(data){//este ejemplo tiene la temperatura en Celsius (metric)
+			console.log(data);
+			var temperatura = data["main"]["temp"];
+			var cielo = data["weather"][0]["description"];
+			var viento = data["wind"]["speed"];
+			var ciudad = data["name"];
+			$("#ciudad").html(ciudad);
+			$("#temperatura").html(temperatura);
+			$("#viento").html("Velocidad del viento (en ...): " + viento);
+			$("#cielo").html(cielo);
 
-		//vamos a empezar con algo simplificado
+			//si la temperatura es mayor a 26 grados mostrar una imagen "de verano"
+			//si 19 <=  temperatura < 26, mostrar imagen primavera (u otoño, depende de la época del año y el hemisferio)
+			//si la temperatura es menor de 19 grados mostrar imagen de invierno
 
-		if (temperatura >= 18) {
-			//mostrar imagen calor
-			$('body').css('background', 'url(cereals-480691_1920.jpg)');
-		} else {
-			//mostrar imagen frío
-			$('body').css('background', 'url(thunder-2063728_1920.jpg)');
-		}
+			//vamos a empezar con algo simplificado
+
+			if (temperatura >= 18) {
+				//mostrar imagen calor
+				$('body').css('background', 'url(cereals-480691_1920.jpg)');
+			} else {
+				//mostrar imagen frío
+				$('body').css('background', 'url(thunder-2063728_1920.jpg)');
+			}
+		});
 	});
-
 });
