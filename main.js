@@ -6,27 +6,11 @@
 
 //cuando se clickee el botón de unidad de temperatura, pase de Celsius a Farenheit y viceversa según el estado del botón
 
-function cambiarUnidades(){
-	//si el botón está en celsius, poner el nombre del botón a Farenheit y pasar a farenheit la temperatura que está en #temperatura
-	//si el atributo value es "c", entonces lo cambiamos a "f" y también cambiamos el html
-	if ($("#CelsiusFa").attr("value") == "c"){
-		$("#CelsiusFa").attr("value", "f");
-		$("#CelsiusFa").html("ºF");
-		//tomar el valor de temperatura y convertirlo
-		//$("#temperatura").html("temperatura en Farenheit"); //convertir de uno a otro
-	} else{
-		//pasar de farenheit a celsius
-		$("#CelsiusFa").attr("value", "c");
-		$("#CelsiusFa").html("ºC");
-		//tomar el valor de temperatura y convertirlo
-		//$("#temperatura").html("temperatura en Celsius"); //convertir de uno a otro
-	}
+function convertirC2F(celsius){
+	return (celsius * 1.8 + 32);
 }
 
 $(document).ready( function(){
-	//evento botón grados//
-	$("#CelsiusFa").on("click", cambiarUnidades);
-	
 
 //http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
 
@@ -51,28 +35,49 @@ $(document).ready( function(){
 		//var api = "http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud +"&APPID=" + clave;
 		$.getJSON(api, function(data){//este ejemplo tiene la temperatura en Celsius (metric)
 			console.log(data);
-			var temperatura = data["main"]["temp"];
+			var temperaturaC = data["main"]["temp"];
+			var temperaturaF = convertirC2F(temperaturaC);
 			var cielo = data["weather"][0]["description"];
 			var viento = data["wind"]["speed"];
 			var ciudad = data["name"];
 			$("#ciudad").html(ciudad);
-			$("#temperatura").html(temperatura);
+			$("#temperatura").html(temperaturaC);
 			$("#viento").html("Velocidad del viento (en ...): " + viento);
 			$("#cielo").html(cielo);
 
+
+			/////////////PARTE A MEJORAR//////////////
+			//Cambiar el fondo según la temperatura
 			//si la temperatura es mayor a 26 grados mostrar una imagen "de verano"
 			//si 19 <=  temperatura < 26, mostrar imagen primavera (u otoño, depende de la época del año y el hemisferio)
 			//si la temperatura es menor de 19 grados mostrar imagen de invierno
 
 			//vamos a empezar con algo simplificado
 
-			if (temperatura >= 18) {
+			if (temperaturaC >= 18) {
 				//mostrar imagen calor
 				$('body').css('background', 'url(cereals-480691_1920.jpg)');
 			} else {
 				//mostrar imagen frío
 				$('body').css('background', 'url(thunder-2063728_1920.jpg)');
 			}
+
+			//falta incorporar íconos del tiempo
+			////////////////////////////////////////
+
+			//evento botón grados//
+			$("#CelsiusFa").on("click", function(){
+				if ($("#CelsiusFa").attr("value") == "c"){
+					$("#CelsiusFa").attr("value", "f");
+					$("#CelsiusFa").html("ºF");
+					$("#temperatura").html(temperaturaF);
+				} else{
+					//pasar de farenheit a celsius
+					$("#CelsiusFa").attr("value", "c");
+					$("#CelsiusFa").html("ºC");
+					$("#temperatura").html(temperaturaC);
+				}
+			});
 		});
 	});
 });
