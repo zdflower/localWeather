@@ -48,23 +48,7 @@ $(document).ready( function(){
 
 
 			/////////////PARTE A MEJORAR//////////////
-			//Cambiar el fondo según la temperatura
-			//si la temperatura es mayor a 26 grados mostrar una imagen "de verano"
-			//si 19 <=  temperatura < 26, mostrar imagen primavera (u otoño, depende de la época del año y el hemisferio)
-			//si la temperatura es menor de 19 grados mostrar imagen de invierno
-
-			//vamos a empezar con algo simplificado
-
-			if (temperaturaC >= 18) {
-				//mostrar imagen calor
-				$('body').css('background', 'url(cereals-480691_1920.jpg)');
-			} else {
-				//mostrar imagen frío
-				$('body').css('background', 'url(thunder-2063728_1920.jpg)');
-			}
-
 			//Falta que los well tengan todos la misma altura y que la temperatura y la unidad estén en la misma línea
-
 			////////////////////////////////////////
 
 			//evento botón grados//

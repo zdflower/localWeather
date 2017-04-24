@@ -1,5 +1,7 @@
 body {
-	background: url(landscape-1752433_1920.jpg);
+	background-color: Dark-Slate-Blue;
+	/*background: url(landscape-1752433_1920.jpg);*/
+	font-family: 'Passion One', cursive;
 }
 
 .transparencia {
