@@ -40,10 +40,11 @@ $(document).ready( function(){
 			var cielo = data["weather"][0]["description"];
 			var viento = data["wind"]["speed"];
 			var ciudad = data["name"];
-			$("#ciudad").html(ciudad);
-			$("#temperatura").html(temperaturaC);
-			$("#viento").html("Velocidad del viento (en ...): " + viento);
-			$("#cielo").html(cielo);
+			var icono = data["weather"][0]["icon"];
+			$("#ciudad").html("<p>"+ciudad+"</p>");
+			$("#temperatura").html("<p>"+temperaturaC+"</p>");
+			$("#viento").html("<p>Velocidad del viento: " + viento + " m/s </p>");
+			$("#cielo").html("<p>" + cielo + " <img src='http://openweathermap.org/img/w/" + icono +".png'>" + " </p>");
 
 
 			/////////////PARTE A MEJORAR//////////////
@@ -62,7 +63,8 @@ $(document).ready( function(){
 				$('body').css('background', 'url(thunder-2063728_1920.jpg)');
 			}
 
-			//falta incorporar íconos del tiempo
+			//Falta que los well tengan todos la misma altura y que la temperatura y la unidad estén en la misma línea
+
 			////////////////////////////////////////
 
 			//evento botón grados//
@@ -70,12 +72,12 @@ $(document).ready( function(){
 				if ($("#CelsiusFa").attr("value") == "c"){
 					$("#CelsiusFa").attr("value", "f");
 					$("#CelsiusFa").html("ºF");
-					$("#temperatura").html(temperaturaF);
+					$("#temperatura").html("<p>"+temperaturaF+"</p>");
 				} else{
 					//pasar de farenheit a celsius
 					$("#CelsiusFa").attr("value", "c");
 					$("#CelsiusFa").html("ºC");
-					$("#temperatura").html(temperaturaC);
+					$("#temperatura").html("<p>"+temperaturaC+"</p>");
 				}
 			});
 		});
