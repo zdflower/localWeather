@@ -15,8 +15,6 @@ $(document).ready( function(){
 	var latitud;
 	var unidad = "metric";
 	var idioma = "es";
-	var c1 = "38fca2502";
-	var c2 = "82f6fb95f6cbc49d295ea26";
 
 	//Obtener longitud y latitud
 	$.getJSON('https://crossorigin.me/http://ip-api.com/json/?callback=?', function(data){
@@ -25,7 +23,7 @@ $(document).ready( function(){
 		latitud = data["lat"];
 
 		//Weather API
-		var api = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud + "&units="+ unidad + "&lang="+ idioma + "&APPID=" + c1 + c2;
+		var api = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud + "&units="+ unidad + "&lang="+ idioma + "&APPID=" + c1;
 		//var api = "http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud +"&APPID=" + clave;
 		$.getJSON(api, function(data){//este ejemplo tiene la temperatura en Celsius (metric)
 			console.log(data);
