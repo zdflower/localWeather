@@ -11,12 +11,6 @@ function convertirC2F(celsius){
 }
 
 $(document).ready( function(){
-
-//http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
-
-//para obtener info a partir de latitud y longitud 
-// ejemplo , la apikey es un ejemplo tb. http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b1b15e88fa797225412429c1c50c122a1
-
 	var longitud;
 	var latitud;
 	var unidad = "metric";
@@ -25,13 +19,13 @@ $(document).ready( function(){
 	var c2 = "82f6fb95f6cbc49d295ea26";
 
 	//Obtener longitud y latitud
-	$.getJSON('http://crossorigin.me/http://ip-api.com/json/?callback=?', function(data){
+	$.getJSON('https://crossorigin.me/http://ip-api.com/json/?callback=?', function(data){
 		//console.log(data);
 		longitud = data["lon"];
 		latitud = data["lat"];
 
 		//Weather API
-		var api = "http://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud + "&units="+ unidad + "&lang="+ idioma + "&APPID=" + c1 + c2;
+		var api = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud + "&units="+ unidad + "&lang="+ idioma + "&APPID=" + c1 + c2;
 		//var api = "http://api.openweathermap.org/data/2.5/weather?lat="+ latitud +"&lon="+ longitud +"&APPID=" + clave;
 		$.getJSON(api, function(data){//este ejemplo tiene la temperatura en Celsius (metric)
 			console.log(data);
@@ -44,7 +38,7 @@ $(document).ready( function(){
 			$("#ciudad").html("<p>"+ciudad+"</p>");
 			$("#temperatura").html("<p>"+temperaturaC+"</p>");
 			$("#viento").html("<p>Velocidad del viento: " + viento + " m/s </p>");
-			$("#cielo").html("<p>" + cielo + " <img src='http://crossorigin.me/http://openweathermap.org/img/w/" + icono +".png'>" + " </p>");
+			$("#cielo").html("<p>" + cielo + " <img src='https://crossorigin.me/http://openweathermap.org/img/w/" + icono +".png'>" + " </p>");
 
 
 			/////////////PARTE A MEJORAR//////////////
