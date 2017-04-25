@@ -15,8 +15,15 @@ $(document).ready( function(){
 	//el problema estaba en la parte de obtener los datos de longitud y latitud de ip-api.com
 	//con una ciudad fija, lo demás funciona.
 	
-	var longitud = 145.77;
-	var latitud = -16.92;
+	var longitud;
+	var latitud;
+	if (navigator.geolocation){
+	    navigator.geolocation.getCurrentPosition(function(position){
+	    	latitud = position.coords.latitude;
+	    	longitud = position.coords.longitude;
+	    });
+	}
+
 	var unidad = "metric";
 	var idioma = "es";
 	var c1 = "38fca250282f6fb95f6cbc49d295ea26";
