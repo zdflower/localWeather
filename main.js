@@ -11,6 +11,10 @@ function convertirC2F(celsius){
 }
 
 $(document).ready( function(){
+	
+	//el problema estaba en la parte de obtener los datos de longitud y latitud de ip-api.com
+	//con una ciudad fija, lo demás funciona.
+	
 	var longitud = 145.77;
 	var latitud = -16.92;
 	var unidad = "metric";
@@ -30,7 +34,7 @@ $(document).ready( function(){
 		$("#ciudad").html("<p>"+ciudad+"</p>");
 		$("#temperatura").html("<p>"+temperaturaC+"</p>");
 		$("#viento").html("<p>Velocidad del viento: " + viento + " m/s </p>");
-		$("#cielo").html("<p>" + cielo + " <img src='https://cors-anywhere.herokuapp.com/http://openweathermap.org/img/w/" + icono +".png'>" + " </p>");
+		$("#cielo").html("<p>" + cielo + " <img src='http://openweathermap.org/img/w/" + icono +".png'>" + " </p>");
 
 			/////////////PARTE A MEJORAR//////////////
 			//Falta que los well tengan todos la misma altura y que la temperatura y la unidad estén en la misma línea
