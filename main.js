@@ -10,9 +10,7 @@ function convertirC2F(celsius){
 	return (celsius * 1.8 + 32);
 }
 
-$(document).ready( function(){
-	
-	//el problema estaba en la parte de obtener los datos de longitud y latitud de ip-api.com
+$(document).ready( function(){	//el problema estaba en la parte de obtener los datos de longitud y latitud de ip-api.com
 	//con una ciudad fija, lo demás funciona.
  $.getJSON("https://cors-anywhere.herokuapp.com/http://ip-api.com/json/?callback=?", function(position) {
 	    	var latitud = position["lat"];
@@ -34,10 +32,6 @@ $(document).ready( function(){
 				$("#viento").html("<p>Velocidad del viento: " + viento + " m/s </p>");
 				$("#cielo").html("<p>" + cielo + " <img src='http://openweathermap.org/img/w/" + icono +".png'>" + " </p>");
 
-				/////////////PARTE A MEJORAR//////////////
-				//Falta que los well tengan todos la misma altura y que la temperatura y la unidad estén en la misma línea
-				////////////////////////////////////////
-
 				//evento botón grados//
 				$("#CelsiusFa").on("click", function(){
 					if ($("#CelsiusFa").attr("value") == "c"){
@@ -53,5 +47,4 @@ $(document).ready( function(){
 				});
 			});
 		});
-	});
 });
