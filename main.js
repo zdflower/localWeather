@@ -12,9 +12,11 @@ function convertirC2F(celsius){
 
 $(document).ready( function(){	//el problema estaba en la parte de obtener los datos de longitud y latitud de ip-api.com
 	//con una ciudad fija, lo demás funciona.
- $.getJSON("https://cors-anywhere.herokuapp.com/http://ip-api.com/json/?callback=?", function(position) {
-	    	var latitud = position["lat"];
-	    	var longitud = position["lon"];
+ $.getJSON("https://cors-anywhere.herokuapp.com/http://ipinfo.io/", function(position) {
+ 			console.log(position);
+ 			var location = position.loc.split(",");
+	    	var latitud = location[0];
+	    	var longitud = location[1];
 	    	var unidad = "metric";
 	    	var idioma = "es";
 	    	var c1 = "38fca250282f6fb95f6cbc49d295ea26";
